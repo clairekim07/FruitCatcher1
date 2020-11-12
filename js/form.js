@@ -11,7 +11,7 @@ class Form{
         this.button.hide();
         this.input.hide();
         this.title.hide();
-    }
+    } 
     display() {
         this.title.html("FRUIT CATCHER");
         this.title.position(600, 50);
