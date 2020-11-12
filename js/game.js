@@ -68,8 +68,7 @@ class Game{
                     
         fill("white");
         textSize(35);
-        text(allPlayers.player1.name + " : " + allPlayers.player1.score,50,50);
-        text(allPlayers.player2.name + " : " + allPlayers.player2.score,50,100);
+        
 
                  }
 
@@ -112,7 +111,7 @@ class Game{
                              if (fruitGroup.get(i).isTouching(players)) 
                              { 
                                  fruitGroup.get(i).destroy(); 
-                                 player.score = player.score+1;
+                                 
                              } 
                          } 
                      }
