@@ -26,13 +26,7 @@ class Game{
                 form = new Form()
                 form.display();
             }
-        player1 = createSprite(200,500);
-        player1.addImage("player1",player_img);
-    
-        player2 = createSprite(800,500);
-        player2.addImage("player2", player_img);
-
-        players=[player1,player2];
+        
 
         }
     
@@ -57,14 +51,14 @@ class Game{
             players[index -1].x = x;
             players[index - 1].y = y;
                        
-        if(index === player.index){
+        /*if(index === player.index){
                          
             fill("black");
             textSize(25);
-            text(allPlayers[plr].name ,x-25,y+25);
+            text(allPlayers[plr].name ,x,y);
                          
                          
-    }
+    }*/
                     
         fill("white");
         textSize(35);
@@ -72,45 +66,65 @@ class Game{
 
                  }
 
-                if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
-                    player.distance -= 10
+                
+                 
+                 if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
+                    player.distance -= 30
                     player.update();
                 }
                 if (keyIsDown(LEFT_ARROW) && player.index !== null) {
-                    player.distance += 10
+                    player.distance += 30
                     player.update();
                 }
             
-                 if (frameCount % 60 === 0) {
-                     fruits = createSprite(random(100, 1000), 0, 100, 100);
-                     fruits.velocityY = 6;
-                     var rand = Math.round(random(1,5));
-                     switch(rand){
-                         case 1: fruits.addImage("fruit1",fruit1_img);
-                         break;
-                         case 2: fruits.addImage("fruit1", fruit2_img);
-                         break;
-                         case 3: fruits.addImage("fruit1", fruit3_img);
-                         break;
-                         case 4: fruits.addImage("fruit1", fruit4_img);
-                         break;
-                         case 5: fruits.addImage("fruit1", fruit5_img);
-                         break;
-                     }
-                     fruitGroup.add(fruits);
-                     
-                 }
                  
-                  if (player.index !== null) 
+                  if (player1 !== null) 
                   {
                      //fill code here, to destroy the objects.
-                     if (player.index !== null) 
+                     if (player1 !== null) 
                      { 
-                         for (var i = 0; i < fruitGroup.length; i++) 
+                         for (var m = 0; m < maskGroup.length; m++) 
                          { 
-                             if (fruitGroup.get(i).isTouching(players)) 
+                             if (maskGroup.get(m).isTouching(player1)) 
                              { 
-                                 fruitGroup.get(i).destroy(); 
+                                maskGroup.get(m).destroy(); 
+                                score++;
+                                 
+                             } 
+                         } 
+                         for (var i = 0; i < virusGroup.length; i++) 
+                         { 
+                             if (virusGroup.get(i).isTouching(player1)) 
+                             { 
+                                virusGroup.get(i).destroy(); 
+                                score = score -1;
+                                 
+                             } 
+                         } 
+                     }
+
+
+                  }
+                  if (player2 !== null) 
+                  {
+                     //fill code here, to destroy the objects.
+                     if (player2 !== null) 
+                     { 
+                         for (var m = 0; m < maskGroup.length; m++) 
+                         { 
+                             if (maskGroup.get(m).isTouching(player2)) 
+                             { 
+                                maskGroup.get(m).destroy(); 
+                                score2++;
+                                 
+                             } 
+                         } 
+                         for (var i = 0; i < virusGroup.length; i++) 
+                         { 
+                             if (virusGroup.get(i).isTouching(player2)) 
+                             { 
+                                virusGroup.get(i).destroy(); 
+                                score2 = score2 -1;
                                  
                              } 
                          } 
